@@ -1,0 +1,104 @@
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+wheels/
+*.whl
+MANIFEST
+
+# ─── Virtual Environments ─────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env.local
+.env.*.local
+
+# ─── Environment & Secrets ────────────────────────────────────────────────────
+.env
+*.pem
+*.key
+
+# ─── FastAPI / Uvicorn ────────────────────────────────────────────────────────
+*.log
+*.pid
+
+# ─── Database ─────────────────────────────────────────────────────────────────
+*.db
+*.sqlite3
+*.sqlite
+
+# ─── Testing ──────────────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+
+# ─── Type Checkers ────────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+.pyright/
+
+# ─── IDE & Editor Specific ────────────────────────────────────────────────────
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+
+# Emacs
+\#*\#
+.\#*
+
+# ─── OS Specific ──────────────────────────────────────────────────────────────
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*.bak
+
+# ─── Jupyter / Data Science ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ─── Distribution / Packaging ─────────────────────────────────────────────────
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+*.tmp
+*.bak
+*.orig
