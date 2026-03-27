@@ -1,5 +1,7 @@
 # AI for the Indian Investor
 
+**ET Gen AI Hackathon 2026 | Problem Statement 6: AI for the Indian Investor**
+
 Institutional-grade stock intelligence for Indian retail investors.
 
 Built by The Silicon Savants for ET Gen AI Hackathon 2026.
@@ -10,15 +12,11 @@ AI for the Indian Investor
 
 Institutional-grade stock market analysis for retail investors, built to reduce information asymmetry and guard against HFT-driven traps.
 
-## 2. Pitch Video
-
-3-Minute Pitch Video Link: [Add link here]
-
-## 3. The Problem & Solution
+## 2. The Problem & Solution
 
 ### Problem
 
-Retail investors operate with delayed and fragmented information. Institutional participants and high-frequency systems react to signals faster, creating an execution and decision-quality gap. This asymmetry leads to emotional entries, poor timing, and avoidable capital loss.
+India has 14 crore+ demat accounts, but most retail investors are flying blind — reacting to tips, missing filings, unable to read technicals, and managing mutual fund portfolios on gut feel. ET Markets has the data. Build the intelligence layer that turns data into actionable, money-making decisions.
 
 ### Solution
 
@@ -29,7 +27,7 @@ This project provides a dual-agent AI analysis pipeline that merges:
 
 The result is a single, low-latency analysis response delivered through FastAPI and Streamlit, so investors can make informed decisions in seconds rather than hours.
 
-## 4. Impact Model (Quantified)
+## 3. Impact Model (Quantified)
 
 Back-of-the-envelope impact estimate:
 
@@ -43,7 +41,7 @@ Business and investor impact:
 - Delivers a democratized API-driven intelligence layer for retail participants.
 - Protects capital by reducing emotional, reactionary trading behavior.
 
-## 5. Architecture & Agent Roles
+## 4. Architecture & Agent Roles
 
 ### System Architecture
 
@@ -72,7 +70,7 @@ Both agents execute in parallel using Python `asyncio.gather` to minimize end-to
 
 The pipeline uses graceful degradation: if one agent fails to fetch or process data, the API returns partial success with available outputs from the healthy agent instead of failing the full request.
 
-## 6. Tech Stack
+## 5. Tech Stack
 
 - Streamlit
 - FastAPI
@@ -82,7 +80,7 @@ The pipeline uses graceful degradation: if one agent fails to fetch or process d
 - pandas
 - ta
 
-## 7. Setup & Run Instructions
+## 6. Setup & Run Instructions
 
 Run the backend and frontend in two terminals.
 
@@ -98,6 +96,6 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 streamlit run app.py
 ```
 
-## 8. Footer
+## 7. Footer
 
 *Built by The Silicon Savants for the ET Gen AI Hackathon 2026.*
