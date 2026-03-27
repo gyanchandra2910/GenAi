@@ -4,6 +4,7 @@ app.py — Streamlit Frontend for AI for the Indian Investor
 Run with: streamlit run app.py
 """
 
+import pandas as pd
 import requests
 import streamlit as st
 
@@ -127,12 +128,6 @@ with st.sidebar:
         help="Look-back window for OHLCV data and pattern detection",
     )
 
-    interval = st.selectbox(
-        "⏱️ Candle Interval",
-        options=["1d", "1wk"],
-        index=0,
-    )
-
     st.markdown("---")
     run_btn = st.button("🔍 Analyze Stock", use_container_width=True, type="primary")
 
@@ -179,7 +174,7 @@ with st.spinner(f"🤖 AI is analyzing **{ticker}** — fetching NSE data & runn
     try:
         resp = requests.post(
             API_URL,
-            json={"ticker": ticker, "period": period, "interval": interval},
+            json={"ticker": ticker, "period": period},
             timeout=60,
         )
         resp.raise_for_status()
@@ -231,7 +226,6 @@ st.markdown(
 preview = data.get("data_preview")
 if preview:
     with st.expander("🗃️ Market Data Preview", expanded=False):
-        import pandas as pd
         df = pd.DataFrame(preview.get("preview_rows", []))
         st.dataframe(df, use_container_width=True)
         st.caption(
