@@ -1,3 +1,16 @@
+# ─── LaTeX / Submission Documents ───────────────────────────────────────────────
+*.tex
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
+
 # ─── Python ───────────────────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
