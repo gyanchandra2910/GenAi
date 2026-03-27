@@ -1,270 +1,103 @@
-<div align="center">
+# AI for the Indian Investor
 
-# 🇮🇳 AI for the Indian Investor
+Institutional-grade stock intelligence for Indian retail investors.
 
-### NSE Intelligence Platform — Full-Stack AI Advisory Application
+Built by The Silicon Savants for ET Gen AI Hackathon 2026.
 
-[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.111+-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.3+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
-[![Groq](https://img.shields.io/badge/Groq-Llama--3.3--70b-F55036?style=for-the-badge&logo=groq&logoColor=white)](https://groq.com)
-[![LangChain](https://img.shields.io/badge/LangChain-0.2+-1C3C3C?style=for-the-badge&logo=chainlink&logoColor=white)](https://langchain.com)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
+## 1. Project Title & Tagline
 
-> **Team: The Silicon Savants** | ET Gen AI Hackathon 2026
+AI for the Indian Investor
 
-*Turning raw NSE market data into institutional-grade investment insights — in seconds.*
+Institutional-grade stock market analysis for retail investors, built to reduce information asymmetry and guard against HFT-driven traps.
 
-</div>
+## 2. Pitch Video
 
----
+3-Minute Pitch Video Link: [Add link here]
 
-## 📌 Overview
+## 3. The Problem & Solution
 
-**AI for the Indian Investor** is a full-stack, dual-agent intelligence platform that processes real-time NSE stock data and company news using large language models to surface **actionable investment signals** — the kind previously available only to institutional traders.
+### Problem
 
-The platform runs two specialised AI agents in parallel and presents results through a **sleek dark-themed Streamlit dashboard**:
+Retail investors operate with delayed and fragmented information. Institutional participants and high-frequency systems react to signals faster, creating an execution and decision-quality gap. This asymmetry leads to emotional entries, poor timing, and avoidable capital loss.
 
-| Agent | Input | Output |
-|-------|-------|--------|
-| 🔭 **Opportunity Radar** | Company news & filings | Fundamental signals with confidence scores |
-| 📊 **Chart Intelligence** | OHLCV price history | Technical patterns + plain-English LLM narrative |
+### Solution
 
----
+This project provides a dual-agent AI analysis pipeline that merges:
 
-## ✨ Features
+- Fundamental signal extraction from company news and events.
+- Technical signal detection from price-action indicators.
 
-### 🤖 AI Intelligence Layer
-- **⚡ Ultra-Low Latency LLM** — Groq inference (Llama-3.3-70b-versatile) delivers sub-second AI responses
-- **🔭 Opportunity Radar Agent** — Scans Yahoo Finance news for 9 signal types (insider buys, bulk deals, earnings beats, fundraising, and more) with LLM-assigned confidence scores
-- **📊 Chart Intelligence Agent** — Computes RSI-14, SMA-20/50, Bollinger Bands, and volume spikes; narrates the full technical setup in plain English
-- **📡 Real-Time NSE Data** — Live OHLCV data and news via `yfinance` for any NSE-listed equity
+The result is a single, low-latency analysis response delivered through FastAPI and Streamlit, so investors can make informed decisions in seconds rather than hours.
 
-### 🎨 Streamlit Frontend (`app.py`)
-- **🌑 Dark Premium Theme** — Custom CSS with navy/orange palette, glassmorphism-style signal cards
-- **⚡ Dual-Column Dashboard** — Fundamental signals and technical signals displayed side-by-side
-- **🏷️ Confidence Badges** — Colour-coded 🟢 High / 🟡 Medium / ⚪ Low confidence indicators per signal
-- **🧭 Direction Chips** — ▲ BULLISH / ▼ BEARISH / ● NEUTRAL labels per technical pattern
-- **💬 LLM Narrative Block** — Plain-English 3–5 sentence technical briefing from Groq
-- **🗃️ Market Data Preview** — First 5 OHLCV candles in an interactive collapsible table
-- **❌ Graceful Error Handling** — Connection refused, timeouts, and HTTP errors surface as friendly messages
+## 4. Impact Model (Quantified)
 
-### 🏗️ Backend Architecture
-- **🛡️ Fault-Tolerant Pipeline** — Parallel `asyncio.gather` execution; if one agent fails, the other still returns results (`partial` status)
-- **📋 Type-Safe API** — Full Pydantic v2 request/response validation with auto-generated Swagger docs
-- **🔧 12-Factor Config** — All secrets via environment variables; zero hardcoded credentials
+Back-of-the-envelope impact estimate:
 
----
+| Metric | Manual Workflow | AI Workflow | Improvement |
+| --- | --- | --- | --- |
+| Research time per stock | 3-5 hours | < 5 seconds | ~99.9% time saved |
 
-## 🛠️ Tech Stack
+Business and investor impact:
 
-| Layer | Technology |
-|-------|-----------|
-| **UI / Frontend** | Streamlit 1.3+ (dark theme, custom CSS) |
-| **Web Framework** | FastAPI + Uvicorn (ASGI) |
-| **LLM Runtime** | Groq — `llama-3.3-70b-versatile` |
-| **AI Orchestration** | LangChain (LCEL chains) |
-| **Market Data** | yfinance (NSE via `.NS` suffix) |
-| **Technical Analysis** | `ta` library (RSI, SMA, Bollinger Bands) |
-| **Data Processing** | Pandas + NumPy |
-| **Config Management** | Pydantic-Settings + python-dotenv |
-| **Language** | Python 3.11+ |
+- Reduces dependence on premium advisory products that often cost ₹5,000+ per month.
+- Delivers a democratized API-driven intelligence layer for retail participants.
+- Protects capital by reducing emotional, reactionary trading behavior.
 
----
+## 5. Architecture & Agent Roles
 
-## 🚀 Setup Instructions
+### System Architecture
 
-### 1. Clone the Repository
+- Frontend: Streamlit dashboard for user input and signal display.
+- Backend: FastAPI orchestration layer with typed request/response models.
+- Data: yfinance for market data and company news.
+- Intelligence: Groq-hosted Llama-3.3-70B via LangChain workflows.
 
-```bash
-git clone https://github.com/gyanchandra2910/GenAi.git
-cd GenAi
-```
+### Agent 1: Opportunity Radar (Fundamental Agent)
 
-### 2. Create & Activate a Virtual Environment
+- Scans recent company news and event context.
+- Extracts fundamental signals and confidence scores.
+- Converts unstructured headlines into decision-ready summaries.
 
-```bash
-# Windows
-python -m venv .venv
-.venv\Scripts\activate
+### Agent 2: Chart Intelligence (Technical Agent)
 
-# macOS / Linux
-python -m venv .venv
-source .venv/bin/activate
-```
+- Computes technical indicators including RSI, SMA, and Bollinger Bands.
+- Detects chart conditions and directional setup.
+- Produces concise technical narrative for the current market state.
 
-### 3. Install Dependencies
+### Communication Model
+
+Both agents execute in parallel using Python `asyncio.gather` to minimize end-to-end latency.
+
+### Error Handling Model
+
+The pipeline uses graceful degradation: if one agent fails to fetch or process data, the API returns partial success with available outputs from the healthy agent instead of failing the full request.
+
+## 6. Tech Stack
+
+- Streamlit
+- FastAPI
+- Groq (Llama-3.3)
+- yfinance
+- LangChain
+- pandas
+- ta
+
+## 7. Setup & Run Instructions
+
+Run the backend and frontend in two terminals.
+
+1. Terminal 1 (API)
 
 ```bash
-pip install -r requirements.txt
-pip install streamlit
-```
-
-### 4. Configure Environment Variables
-
-```bash
-cp .env.example .env
-```
-
-Open `.env` and set your Groq API key:
-
-```env
-GROQ_API_KEY=gsk_your_actual_api_key_here
-GROQ_MODEL=llama-3.3-70b-versatile
-APP_ENV=development
-```
-
-> 🔑 Get a free Groq API key at [console.groq.com](https://console.groq.com)
-
----
-
-## ▶️ Running the Application (Two Terminals)
-
-The platform requires **two services running simultaneously**.
-
-### Terminal 1 — FastAPI Backend
-
-```bash
-# Activate venv first
-.venv\Scripts\activate          # Windows
-source .venv/bin/activate       # macOS / Linux
-
-# Start the backend API server
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-Backend is live at **`http://localhost:8000`**
-
-| Endpoint | Description |
-|----------|-------------|
-| `GET  /health` | Liveness check |
-| `POST /api/v1/analyze` | Full dual-agent stock analysis |
-| `GET  /docs` | Interactive Swagger UI |
-
----
-
-### Terminal 2 — Streamlit Frontend
+2. Terminal 2 (UI)
 
 ```bash
-# In a NEW terminal window, activate venv
-.venv\Scripts\activate          # Windows
-source .venv/bin/activate       # macOS / Linux
-
-# Start the frontend dashboard
 streamlit run app.py
 ```
 
-Frontend is live at **`http://localhost:8501`**
+## 8. Footer
 
-> ⚠️ **Important:** Start the FastAPI backend (Terminal 1) **before** opening the Streamlit UI.
-
----
-
-## 📡 REST API Usage
-
-### Health Check
-
-```bash
-curl http://localhost:8000/health
-```
-
-### Full Stock Analysis — `POST /api/v1/analyze`
-
-```bash
-curl -X POST http://localhost:8000/api/v1/analyze \
-  -H "Content-Type: application/json" \
-  -d '{
-    "ticker": "TCS",
-    "period": "3mo",
-    "interval": "1d"
-  }'
-```
-
-**Example Response:**
-
-```json
-{
-  "status": "success",
-  "ticker": "TCS.NS",
-  "message": "Analysed TCS.NS | 63 candles | 2 fundamental signal(s) | 3 technical signal(s).",
-  "fundamental_signals": [
-    {
-      "ticker": "TCS",
-      "signal_type": "PARTNERSHIP",
-      "confidence": 0.82,
-      "summary": "TCS signed a multi-year digital transformation deal..."
-    }
-  ],
-  "technical_signals": [
-    {
-      "pattern_name": "Price Above Both SMAs (Uptrend)",
-      "direction": "BULLISH",
-      "confidence": 0.65,
-      "narrative": "TCS is trading above its 20-day (₹3,421) and 50-day (₹3,387) moving averages..."
-    }
-  ]
-}
-```
-
-### Supported Tickers (Examples)
-
-```
-TCS · RELIANCE · INFY · HDFCBANK · WIPRO · BAJFINANCE · ADANIENT · TATAMOTORS
-```
-
----
-
-## 📁 Project Structure
-
-```
-.
-├── app.py                       # Streamlit frontend (dark theme dashboard)
-├── main.py                      # FastAPI app factory + health check
-├── requirements.txt             # Pinned dependencies
-├── .env.example                 # Environment variable template
-│
-├── api/
-│   └── v1/
-│       └── router.py            # POST /analyze endpoint (dual-agent pipeline)
-│
-├── agents/
-│   ├── opportunity_radar.py     # Fundamental signals agent (LangChain + Groq)
-│   └── chart_intelligence.py   # Technical analysis agent (ta + LangChain + Groq)
-│
-├── services/
-│   └── market_data.py           # yfinance data fetching (OHLCV + news)
-│
-├── models/
-│   └── schemas.py               # Pydantic request/response schemas
-│
-├── core/
-│   └── config.py                # Pydantic-Settings environment management
-│
-└── utils/                       # Shared helper functions (future use)
-```
-
----
-
-## 🔮 Roadmap
-
-- [ ] WebSocket endpoint for live tick-by-tick streaming
-- [ ] Portfolio-level analysis across multiple tickers
-- [ ] Backtesting engine for historical signal validation
-- [ ] WhatsApp / Telegram alert integration via Twilio
-- [ ] Candlestick charts with pattern overlays (Plotly)
-
----
-
-## 🤝 Team
-
-**The Silicon Savants** — ET Gen AI Hackathon 2026
-
----
-
-<div align="center">
-
-Built with ❤️ for the Indian retail investor.
-
-*"The stock market is a device for transferring money from the impatient to the patient." — Warren Buffett*
-
-</div>
+*Built by The Silicon Savants for the ET Gen AI Hackathon 2026.*
